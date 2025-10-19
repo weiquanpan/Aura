@@ -1,0 +1,106 @@
+# ✨ Aura: The Floating AI Assistant
+
+Aura 是一款 Windows 效率工具，旨在为您提供零摩擦、上下文感知的多模态 AI 交互体验。告别繁琐的“复制-切换-粘贴”循环，让 AI 在您需要的地方即时出现。
+
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/your-username/aura/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/your-username/aura/releases)
+
+---
+
+### 演示
+
+**处理选中文本:**
+
+![GIF showing text selection, icon appearing, and result window popping up with an explanation](https://user-images.githubusercontent.com/your-username/your-repo/your-gif-url-1.gif)
+
+**分析屏幕截图:**
+
+![GIF showing a screenshot being taken with Win+Shift+S, icon appearing, and result window showing an analysis of the image](https://user-images.githubusercontent.com/your-username/your-repo/your-gif-url-2.gif)
+
+## 🚀 它是什么？
+
+在日常工作和学习中，我们经常需要借助 AI 来解释代码、翻译文本、润色文章或分析图表。传统的工作流是：选中内容 -> `Ctrl+C` -> 切换到浏览器 -> 找到AI工具 -> `Ctrl+V` -> 输入指令 -> 等待结果。
+
+**Aura 彻底颠覆了这一流程。**
+
+它是一个常驻在您系统后台的智能助手。当您选中一段文本或截取一张图片时，Aura 会在您的鼠标旁“浮动”出现一个简洁的图标。只需轻轻一点，它就会立即将上下文内容发送给强大的AI模型（如 Google Gemini），并在一个独立的窗口中向您展示结果。
+
+**整个过程，行云流水，心流不被打断。**
+
+## 🌟 核心功能
+
+* **✍️ 实时文本感知**: 无需复制！只需用鼠标选择任何应用程序中的文本，Aura 就能即时感知。
+* **📸 智能截图分析**: 使用 Windows 自带的截图工具 (`Win+Shift+S`) 截取任何区域，Aura 同样可以对其进行分析。
+* **⚡️ 零摩擦工作流**: “选中 -> 点击”，两步完成所有操作。AI 仿佛成为了您操作系统的一部分。
+* **🧠 多模态 AI 支持**: 无缝集成 Google Gemini Pro (用于文本) 和 Gemini Pro Vision (用于图片)，提供全面的分析能力。
+* **🛠️ 高度可定制**:
+  * **自定义系统级指令 (Prompt)**: 您可以设定 AI 的角色和任务，例如“你是一个资深程序员，请审查以下代码”或“请将以下内容翻译成日文”。
+  * **支持网络代理**: 在企业或学校等受限网络环境下，可配置 HTTP/S 代理以确保正常使用。
+* **🕊️ 轻量与原生**: 基于 C# 和 WPF 开发，原生 Windows 体验，后台资源占用极低。
+
+## ⚙️ 如何使用
+
+### 1. 安装
+
+1.  前往本项目的 [**Releases**](https://github.com/your-username/aura/releases) 页面。
+2.  下载最新版本的 `Aura-Installer.exe` 或 `Aura.zip`。
+3.  运行安装程序，或解压后直接运行 `Aura.exe`。
+4.  Aura 将在您的系统托盘（桌面右下角）中显示一个图标，表示它正在后台运行。
+
+### 2. 配置
+
+在首次使用前，您需要进行一些简单配置：
+
+1.  **右键点击**系统托盘中的 Aura 图标，选择“设置”。
+2.  **填入您的 Gemini API Key**:
+    * 您需要一个 Google Gemini API 密钥。可以前往 [Google AI Studio](https://aistudio.google.com/app/apikey)免费获取。
+3.  **(可选) 编写您的自定义指令**:
+    * 在“Custom Prompt”文本框中，定义您希望 AI 遵循的指令。请使用 `{input}`作为占位符，它将被您选择的文本或图片所替换。
+    * **示例**:
+      * `请用通俗易懂的语言解释以下概念：{input}`
+      * `Analyze this screenshot and describe the user interface elements: {input}`
+4.  **(可选) 配置网络代理**:
+    * 如果需要，勾选“启用网络代理”并填入您的代理服务器地址（例如 `http://127.0.0.1:7890`）。
+5.  点击“保存”。
+
+### 3. 开始体验！
+
+* **处理文本**: 在任何地方用鼠标选中一段文字，Aura 图标将会出现。点击它！
+* **处理截图**: 按下 `Win + Shift + S`，截取屏幕任意部分，Aura 图标将会出现。点击它！
+
+
+
+### 技术栈
+
+* **语言**: C# 
+* **框架**: .NET  / WPF
+* **核心技术**:
+  * Windows UI Automation (UIA) for real-time text selection
+  * P/Invoke for Global Mouse Hooks & Clipboard Monitoring
+  * System.Net.Http.HttpClient for API calls
+  * System.Text.Json for JSON serialization/deserialization
+
+### 从源码构建
+
+1. **环境要求**:
+
+   * Visual Studio 2022 (Community Edition 或更高版本)
+   * 确保已安装 **“.NET 桌面开发”** 工作负载。
+
+2. **步骤**:
+
+   ```bash
+   # 1. 克隆仓库
+   git clone [https://github.com/your-username/aura.git](https://github.com/your-username/aura.git)
+   
+   # 2. 打开解决方案
+   cd aura
+   start Aura.sln
+   
+   # 3. 在 Visual Studio 中，将项目配置设置为 "Release" 和 "Any CPU"
+   # 4. 点击 "生成" -> "生成解决方案" (或按 F6)
+   ```
+
+   可执行文件将位于 `bin/Release/net8.0-windows/` 目录下。
+
